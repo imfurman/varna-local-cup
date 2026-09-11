@@ -1,0 +1,17 @@
+Generated with the built-in imagegen tool (one request).
+Output: public/og.png — 1737 × 905 px.
+
+Use case: ads-marketing
+Asset type: Telegram / Open Graph landscape social-sharing cover, one finished raster image, 1536x800 pixels (approximately 1.91:1).
+Primary request: A professional minimalist typographic cycling race poster for VARNA LOCAL CUP, with exceptionally crisp typography and all event information legible when reduced to 400px width.
+Style/medium: Strict modern cycling editorial graphic design, flat solid-color printed poster aesthetic, condensed bold uppercase sans-serif typography. Sophisticated asymmetrical layout, strong scale hierarchy, clear spacing, generous negative space, minimum 7% safe margins.
+Color palette: black #191919, near-white #fafafa, vermilion #de351e only. Use near-white background, black main text and vermilion punctuation and selected text accents.
+Composition: Dominant large title in two lines "VARNA" and "LOCAL CUP". Supporting date and distance arranged in a clear generous editorial composition. A simple red diagonal slash is permitted as brand punctuation. Keep the secondary time line comfortably large.
+Text (verbatim, must include every line accurately, no additional text):
+"VARNA LOCAL CUP"
+"13.09.2026"
+"40,42 КМ"
+"СБОР 10:00 · СТАРТ ≈10:30"
+"ШОССЕ + МТБ"
+Constraints: All Bulgarian Cyrillic, digits, punctuation and approximation sign must render exactly as above. Do not replace comma in distance with a dot. Do not change event date or times. 'ШОССЕ + МТБ' is the smallest text but remains readable. Leave 7% safe margins. Produce a finished full-bleed graphic, not a mockup.
+Avoid: cards, gradients, screenshots, stock cyclists, invented sponsors, fake routes, maps, decorative bicycle illustrations, photos, 3D, paper textures, additional wording, borders, logos, watermark.
