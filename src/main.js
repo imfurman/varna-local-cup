@@ -86,18 +86,24 @@ const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 tiles.on('tileerror', () => { document.querySelector('.map-error').hidden = false; });
 const coords = course.points.map(p => [p.lat, p.lon]);
-L.polyline(coords, { color: '#fff', weight: 7, opacity: 0.9 }).addTo(map);
-const routeLine = L.polyline(coords, { color: '#e33b24', weight: 3.5, opacity: 1 }).addTo(map);
-const fitMap = () => map.fitBounds(routeLine.getBounds(), { padding: [45, 45] });
+L.polyline(coords, { color: '#713c24', weight: 10, opacity: 0.18, interactive: false }).addTo(map);
+L.polyline(coords, { color: '#fffdf5', weight: 8, opacity: 1, interactive: false }).addTo(map);
+const routeLine = L.polyline(coords, { color: '#f04428', weight: 4.5, opacity: 1 }).addTo(map);
+const fitMap = () => map.fitBounds(routeLine.getBounds(), { paddingTopLeft: [65, 65], paddingBottomRight: [65, 45] });
 fitMap();
 document.querySelector('#fit-map').addEventListener('click', fitMap);
-const markerIcon = (text, type) => L.divIcon({ className: 'route-marker', html: `<span class="${type}">${text}</span>`, iconSize: [28, 28], iconAnchor: [14, 14] });
-L.marker(coords[0], { icon: markerIcon('С', 'marker-start'), title: 'Старт' }).addTo(map).bindPopup('Старт маршрута');
-L.marker(coords.at(-1), { icon: markerIcon('Ф', 'marker-finish'), title: 'Финиш' }).addTo(map).bindPopup('Финиш маршрута');
+const markerIcon = (text, type, below = false) => L.divIcon({ className: 'route-marker', html: `<span class="${type}">${text}</span>`, iconSize: [32, 32], iconAnchor: [16, below ? -8 : 16] });
+const endpointIcon = (text, type) => L.divIcon({
+  className: `endpoint-marker ${type}`,
+  html: `<span class="endpoint-badge"><i aria-hidden="true"></i>${text}</span><span class="endpoint-dot"></span>`,
+  iconSize: [90, 48], iconAnchor: [45, 48], popupAnchor: [0, -44],
+});
+L.marker(coords[0], { icon: endpointIcon('Старт', 'marker-start'), title: 'Старт', zIndexOffset: 200 }).addTo(map).bindPopup('Старт маршрута');
+L.marker(coords.at(-1), { icon: endpointIcon('Финиш', 'marker-finish'), title: 'Финиш', zIndexOffset: 200 }).addTo(map).bindPopup('Финиш маршрута');
 if (event.meeting) {
-  const meetingMarker = L.circleMarker([event.meeting.lat, event.meeting.lon], { color: '#fff', fillColor: '#337db6', fillOpacity: 1, weight: 2, radius: 7 })
+  const meetingMarker = L.circleMarker([event.meeting.lat, event.meeting.lon], { color: '#fff', fillColor: '#138bce', fillOpacity: 1, weight: 3, radius: 7 })
     .addTo(map)
-    .bindTooltip(`Сбор · ${escape(event.meeting.time)}`, { permanent: true, direction: 'left', offset: [-12, 0], className: 'meeting-tooltip' })
+    .bindTooltip(`Сбор · ${escape(event.meeting.time)}`, { permanent: true, direction: 'right', offset: [12, 0], className: 'meeting-tooltip' })
     .bindPopup(`<strong>Точка сбора · ${escape(event.meeting.time)}</strong><br>${meetingCoordinates}<br>Старт заезда ${escape(startLabel)}${event.startApproximate ? ' (ориентировочно)' : ''}`);
   document.querySelector('#show-meeting').addEventListener('click', () => {
     const container = map.getContainer();
@@ -110,7 +116,7 @@ if (event.meeting) {
 }
 for (let km = 10; km < course.distanceM / 1000; km += 10) {
   const p = course.points.find(p => p.distanceM >= km * 1000);
-  L.marker([p.lat, p.lon], { icon: markerIcon(km, 'marker-km'), title: `${km} км` }).addTo(map).bindPopup(`${km} км`);
+  L.marker([p.lat, p.lon], { icon: markerIcon(km, 'marker-km', course.distanceM - p.distanceM < 1000), title: `${km} км` }).addTo(map).bindPopup(`${km} км`);
 }
 new ResizeObserver(() => map.invalidateSize()).observe(document.querySelector('#map'));
 
