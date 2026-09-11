@@ -1,0 +1,6 @@
+[
+  { "id": "ruslan-shchur", "bib": 1, "name": "Руслан Щур", "gender": "male" },
+  { "id": "ilya-garkusha", "bib": 2, "name": "Илья Гаркуша", "gender": "male" },
+  { "id": "andrey-tikhiy", "bib": 3, "name": "Андрей Тихий", "gender": "male" },
+  { "id": "evgeniya-shatskaya", "bib": 4, "name": "Евгения Шацкая", "gender": "female" }
+]

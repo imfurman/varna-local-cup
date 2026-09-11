@@ -1,0 +1,18 @@
+{
+  "id": "2026-09-13",
+  "title": "Varna Local Cup",
+  "edition": "01",
+  "location": "Варна, Болгария",
+  "date": "2026-09-13",
+  "startTime": null,
+  "timezone": "Europe/Sofia",
+  "status": "upcoming",
+  "ranking": "gender",
+  "routeFile": "route.gpx",
+  "timing": {
+    "gateRadiusM": 60,
+    "checkpointEveryM": 500,
+    "checkpointRadiusM": 120,
+    "maxGapSeconds": 30
+  }
+}

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.DS_Store
+.sites-runtime/
+.codebase-memory/
+src/generated/
+activities/
+*.fit
+.env*
+!.env.example

@@ -1,0 +1,27 @@
+{
+  "name": "sunday-race",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "node scripts/prepare.mjs && vite --host 127.0.0.1",
+    "build": "node scripts/prepare.mjs && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test",
+    "import:fit": "node scripts/import-fit.mjs",
+    "approve": "node scripts/approve.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/manrope": "^5.3.0",
+    "@fontsource/oswald": "^5.3.0",
+    "@garmin/fitsdk": "^21.214.0",
+    "fast-xml-parser": "^5.11.1",
+    "leaflet": "^1.9.4"
+  },
+  "devDependencies": {
+    "vite": "^8.3.0"
+  }
+}
