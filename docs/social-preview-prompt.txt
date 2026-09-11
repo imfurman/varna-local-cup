@@ -10,8 +10,11 @@ Composition: Dominant large title in two lines "VARNA" and "LOCAL CUP". Supporti
 Text (verbatim, must include every line accurately, no additional text):
 "VARNA LOCAL CUP"
 "13.09.2026"
-"40,42 КМ"
+"40,27 КМ"
 "СБОР 10:00 · СТАРТ ≈10:30"
 "ШОССЕ + МТБ"
 Constraints: All Bulgarian Cyrillic, digits, punctuation and approximation sign must render exactly as above. Do not replace comma in distance with a dot. Do not change event date or times. 'ШОССЕ + МТБ' is the smallest text but remains readable. Leave 7% safe margins. Produce a finished full-bleed graphic, not a mockup.
 Avoid: cards, gradients, screenshots, stock cyclists, invented sponsors, fake routes, maps, decorative bicycle illustrations, photos, 3D, paper textures, additional wording, borders, logos, watermark.
+
+2026-09-11 correction, built-in imagegen edit of public/og.png:
+Use case: text-localization. Edit target: attached existing Varna Local Cup Telegram cover. Change ONLY the distance text from "40,42 КМ" to "40,27 КМ". Keep the same font, size, black color, position, spacing, layout and landscape aspect ratio. Preserve all other content exactly: VARNA LOCAL CUP, 13.09.2026, СБОР 10:00 · СТАРТ ≈10:30, ШОССЕ + МТБ, red slash, background. No other changes.
