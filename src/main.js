@@ -28,6 +28,9 @@ const month = dateFormat.formatToParts(date).find(part => part.type === 'month')
 const longDate = dateFormat.format(date).replace(/ г\.$/, '');
 const weekday = new Intl.DateTimeFormat('ru-RU', { weekday: 'long', timeZone: 'UTC' }).format(date);
 const status = { upcoming: 'Готовимся к старту', results: 'Принимаем результаты', finished: 'Заезд завершён' }[event.status];
+const startLabel = event.startTime ? `${event.startApproximate ? '≈ ' : ''}${event.startTime}` : 'Время уточняется';
+const meetingCoordinates = event.meeting ? `${number(Math.abs(event.meeting.lat), 5)}° ${event.meeting.lat >= 0 ? 'С' : 'Ю'}, ${number(Math.abs(event.meeting.lon), 5)}° ${event.meeting.lon >= 0 ? 'В' : 'З'}` : '';
+const meetingMapsUrl = event.meeting ? `https://www.google.com/maps/search/?api=1&query=${event.meeting.lat}%2C${event.meeting.lon}` : '';
 document.title = `${event.title} · ${longDate}`;
 
 document.querySelector('#app').innerHTML = `
@@ -38,7 +41,7 @@ document.querySelector('#app').innerHTML = `
   <main>
     <section class="event-heading" aria-labelledby="event-title">
       <div><div class="eyebrow"><span class="eyebrow-line"></span>${escape(event.location)} <span class="dot-separator">/</span> Шоссе + МТБ</div><h1 id="event-title">${escape(event.title)}</h1><p>Один маршрут. Зачёт среди мужчин и женщин.</p></div>
-      <div class="event-date"><span class="date-day">${date.getUTCDate()}</span><div><strong>${escape(month)} ${date.getUTCFullYear()}</strong><span>${escape(weekday)} · ${event.startTime || 'время уточняется'}</span></div></div>
+      <div class="event-date"><span class="date-day">${date.getUTCDate()}</span><div><strong>${escape(month)} ${date.getUTCFullYear()}</strong><span>${escape(weekday)}</span><span class="heading-schedule">${event.meeting ? `Сбор ${escape(event.meeting.time)} · ` : ''}Старт ${escape(startLabel)}</span></div></div>
     </section>
     <section id="route" class="route-section" aria-labelledby="route-title">
       <div class="section-heading"><div class="section-title"><span class="section-number">01</span><h2 id="route-title">Маршрут заезда</h2></div><span class="status-pill"><span></span>${status}</span></div>
@@ -49,7 +52,11 @@ document.querySelector('#app').innerHTML = `
         </div>
         <aside class="route-aside" aria-label="Параметры маршрута и старт">
           <div class="distance-card"><div class="card-eyebrow">ДИСТАНЦИЯ ЗАЕЗДА ${icon('arrow', 21)}</div><div class="distance-value">${number(course.distanceM / 1000, 2)}<span>км</span></div><div class="terrain-stats"><div><span>↗ Набор высоты</span><strong>${number(course.ascentM)} <small>м</small></strong></div><div><span>↘ Спуск</span><strong>${number(course.descentM)} <small>м</small></strong></div></div><div class="route-points"><div><i class="start-dot"></i><span>Старт<strong>${course.points[0].lat.toFixed(5)}, ${course.points[0].lon.toFixed(5)}</strong></span></div><div><i class="finish-dot"></i><span>Финиш<strong>${course.points.at(-1).lat.toFixed(5)}, ${course.points.at(-1).lon.toFixed(5)}</strong></span></div></div><a href="./${escape(event.routeFile)}" download class="download-button">${icon('download', 19)} Скачать маршрут GPX ${icon('arrow', 19)}</a></div>
-          <div class="start-card"><span class="small-label">ВСТРЕЧАЕМСЯ НА СТАРТЕ</span><div><span class="start-time">${event.startTime || 'Время уточняется'}</span>${icon('clock', 25)}</div><p>${escape(longDate)}<br>Местное время · ${escape(event.timezone)}</p></div>
+          <div class="start-card"><span class="small-label">${escape(weekday)} · ${escape(longDate)}</span>
+            <dl class="event-schedule">${event.meeting ? `<div><dt>Сбор участников</dt><dd>${escape(event.meeting.time)}</dd></div>` : ''}<div><dt>Старт заезда${event.startApproximate ? '<small>ориентировочно</small>' : ''}</dt><dd>${escape(startLabel)}</dd></div></dl>
+            <p>Местное время · ${escape(event.timezone)}</p>
+            ${event.meeting ? `<div class="meeting-point"><h3>Точка сбора</h3><p>${meetingCoordinates}</p><button id="show-meeting" type="button">Показать на карте ${icon('fit', 16)}</button><a href="${meetingMapsUrl}" target="_blank" rel="noopener noreferrer">Открыть в картах ${icon('arrow', 16)}</a></div>` : ''}
+          </div>
         </aside>
       </div>
     </section>
@@ -77,6 +84,20 @@ document.querySelector('#fit-map').addEventListener('click', fitMap);
 const markerIcon = (text, type) => L.divIcon({ className: 'route-marker', html: `<span class="${type}">${text}</span>`, iconSize: [28, 28], iconAnchor: [14, 14] });
 L.marker(coords[0], { icon: markerIcon('С', 'marker-start'), title: 'Старт' }).addTo(map).bindPopup('Старт маршрута');
 L.marker(coords.at(-1), { icon: markerIcon('Ф', 'marker-finish'), title: 'Финиш' }).addTo(map).bindPopup('Финиш маршрута');
+if (event.meeting) {
+  const meetingMarker = L.circleMarker([event.meeting.lat, event.meeting.lon], { color: '#fff', fillColor: '#337db6', fillOpacity: 1, weight: 2, radius: 7 })
+    .addTo(map)
+    .bindTooltip(`Сбор · ${escape(event.meeting.time)}`, { permanent: true, direction: 'left', offset: [-12, 0], className: 'meeting-tooltip' })
+    .bindPopup(`<strong>Точка сбора · ${escape(event.meeting.time)}</strong><br>${meetingCoordinates}<br>Старт заезда ${escape(startLabel)}${event.startApproximate ? ' (ориентировочно)' : ''}`);
+  document.querySelector('#show-meeting').addEventListener('click', () => {
+    const container = map.getContainer();
+    container.scrollIntoView({ block: 'center', behavior: 'instant' });
+    container.tabIndex = 0;
+    container.focus({ preventScroll: true });
+    map.setView(meetingMarker.getLatLng(), 18);
+    meetingMarker.openPopup();
+  });
+}
 for (let km = 10; km < course.distanceM / 1000; km += 10) {
   const p = course.points.find(p => p.distanceM >= km * 1000);
   L.marker([p.lat, p.lon], { icon: markerIcon(km, 'marker-km'), title: `${km} км` }).addTo(map).bindPopup(`${km} км`);

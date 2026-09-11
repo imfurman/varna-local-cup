@@ -10,6 +10,7 @@
 
 ## Behavior
 
+- Сбор и старт показаны отдельно. `meeting` задаёт время и координаты сбора, отметку на карте и переход к ней; `startApproximate` помечает ориентировочный старт. Эти поля не меняют GPX или хронометраж FIT.
 - Данные проверяются до сборки. Неизвестные участники, повторные номера, неверные времена и устаревшие результаты останавливают сборку.
 - Общий список сортируется по полному времени; официальные места отдельно в мужском и женском зачётах. Равные целые секунды дают места `1, 1, 3`. Велосипед на категорию не влияет.
 - Средняя скорость = длина GPX / полное время, а не средняя скорость движения из FIT.
@@ -23,7 +24,7 @@
 
 ## Data & Files
 
-- `data/event.json`: id, title, edition, location, date, startTime, timezone, status, ranking, routeFile, timing.
+- `data/event.json`: id, title, edition, location, date, startTime, startApproximate, meeting (`time`, `lat`, `lon`), timezone, status, ranking, routeFile, timing.
 - `data/participants.json`: массив `{ id, bib, name, gender }`.
 - `data/results.json`: подтверждённые записи с eventId, riderId, временем, отметками, distanceM, routeMatched, trace, courseHash, sourceHash, note, approvedAt и диагностикой.
 - `public/route.gpx`: оригинал предоставленного маршрута. Поддерживается один непрерывный GPX trkseg.

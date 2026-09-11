@@ -4,7 +4,13 @@
   "edition": "01",
   "location": "Варна, Болгария",
   "date": "2026-09-13",
-  "startTime": null,
+  "startTime": "10:30",
+  "startApproximate": true,
+  "meeting": {
+    "time": "10:00",
+    "lat": 43.20807,
+    "lon": 27.92384
+  },
   "timezone": "Europe/Sofia",
   "status": "upcoming",
   "ranking": "gender",

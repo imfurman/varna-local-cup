@@ -36,6 +36,12 @@ export function validateData(event, participants, results) {
   assert(/^\d{4}-\d{2}-\d{2}$/.test(event.date) && new Date(`${event.date}T12:00:00Z`).toISOString().slice(0, 10) === event.date, 'Некорректная дата заезда');
   new Intl.DateTimeFormat('ru', { timeZone: event.timezone });
   assert(event.startTime === null || /^([01]\d|2[0-3]):[0-5]\d$/.test(event.startTime), 'Время старта: HH:MM или null');
+  assert(event.startApproximate === undefined || typeof event.startApproximate === 'boolean', 'startApproximate: true или false');
+  if (event.meeting != null) {
+    assert(/^([01]\d|2[0-3]):[0-5]\d$/.test(event.meeting.time), 'Время сбора: HH:MM');
+    assert(Number.isFinite(event.meeting.lat) && Math.abs(event.meeting.lat) <= 90, 'Некорректная широта точки сбора');
+    assert(Number.isFinite(event.meeting.lon) && Math.abs(event.meeting.lon) <= 180, 'Некорректная долгота точки сбора');
+  }
   assert(['upcoming', 'results', 'finished'].includes(event.status), 'Неизвестный статус заезда');
   assert(event.ranking === 'gender', 'ranking: gender — зачёт по полу');
   assert(/^[a-zA-Z0-9_.-]+\.gpx$/i.test(event.routeFile), 'routeFile: имя GPX в public/');
