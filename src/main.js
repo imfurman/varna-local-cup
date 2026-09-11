@@ -5,6 +5,7 @@ import '@fontsource/oswald/600.css';
 import './style.css';
 import race from './generated/race.json';
 import { categories, formatTime, leaderboard } from './lib/race.js';
+import { meetingTimestamp, countdownParts } from './lib/countdown.js';
 
 const { event, participants, results, course } = race;
 const number = (value, digits = 0) => new Intl.NumberFormat('ru-RU', { maximumFractionDigits: digits, minimumFractionDigits: digits }).format(value);
@@ -31,6 +32,7 @@ const status = { upcoming: 'Готовимся к старту', results: 'Пр�
 const startLabel = event.startTime ? `${event.startApproximate ? '≈ ' : ''}${event.startTime}` : 'Время уточняется';
 const meetingCoordinates = event.meeting ? `${number(Math.abs(event.meeting.lat), 5)}° ${event.meeting.lat >= 0 ? 'С' : 'Ю'}, ${number(Math.abs(event.meeting.lon), 5)}° ${event.meeting.lon >= 0 ? 'В' : 'З'}` : '';
 const meetingMapsUrl = event.meeting ? `https://www.google.com/maps/search/?api=1&query=${event.meeting.lat}%2C${event.meeting.lon}` : '';
+const meetingAt = meetingTimestamp(event);
 document.title = `${event.title} · ${longDate}`;
 
 document.querySelector('#app').innerHTML = `
@@ -44,6 +46,7 @@ document.querySelector('#app').innerHTML = `
       <div class="event-name"><p class="eyebrow">Локальная велогонка <span>Шоссе / МТБ</span></p><h1 id="event-title">${escape(event.title)}</h1></div>
       <div class="event-date"><strong class="date-day">${String(date.getUTCDate()).padStart(2, '0')}.${String(date.getUTCMonth()+1).padStart(2, '0')}<span>/${date.getUTCFullYear()}</span></strong><p>${escape(weekday)}<br>${event.meeting ? `Сбор <b>${escape(event.meeting.time)}</b> · ` : ''}Старт <b>${escape(startLabel)}</b></p></div>
     </section>
+    ${meetingAt !== null ? `<section class="meeting-countdown" aria-label="Обратный отсчёт до сбора"><div class="countdown-caption"><span id="countdown-label">До сбора</span><p>${date.getUTCDate()} ${escape(month)} · ${escape(event.meeting.time)} · время Варны</p></div><div id="countdown-digits" class="countdown-digits" role="timer" aria-live="off">${[['days', 'дни'], ['hours', 'часы'], ['minutes', 'минуты'], ['seconds', 'секунды']].map(([key, label]) => `<div><strong data-countdown="${key}">00</strong><span>${label}</span></div>`).join('')}</div><p id="countdown-started" class="countdown-started" hidden>Увидимся на точке сбора!</p><span id="countdown-announcement" class="sr-only" role="status"></span></section>` : ''}
     <section id="route" class="route-section" aria-labelledby="route-title">
       <div class="section-heading"><h2 id="route-title">Маршрут</h2><span class="section-note">${escape(event.location)} <span class="note-divider">/</span> ${status}</span></div>
       <div class="route-grid">
@@ -78,6 +81,26 @@ document.querySelector('#app').innerHTML = `
   </main>
   <footer><a class="footer-brand" href="#">${escape(event.title)}<span>/</span></a><span>Варна · ${date.getUTCFullYear()}</span><a href="./${escape(event.routeFile)}" download>Маршрут GPX ${icon('download', 16)}</a></footer>
   <dialog id="result-dialog"><div class="dialog-heading"><h2 id="result-name">Результат</h2><button id="close-dialog" class="icon-button" aria-label="Закрыть">${icon('close')}</button></div><div id="result-detail"></div></dialog>`;
+
+if (meetingAt !== null) {
+  const digits = document.querySelector('#countdown-digits');
+  const fields = [...digits.querySelectorAll('[data-countdown]')];
+  let timer;
+  const updateCountdown = () => {
+    const remaining = countdownParts(meetingAt);
+    for (const field of fields) field.textContent = String(remaining[field.dataset.countdown]).padStart(2, '0');
+    if (remaining.started) {
+      document.querySelector('#countdown-label').textContent = 'Сбор уже начался';
+      digits.hidden = true;
+      document.querySelector('#countdown-started').hidden = false;
+      document.querySelector('#countdown-announcement').textContent = 'Сбор уже начался';
+      clearInterval(timer);
+    }
+  };
+  timer = setInterval(updateCountdown, 1000);
+  updateCountdown();
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) updateCountdown(); });
+}
 
 const map = L.map('map', { scrollWheelZoom: false, zoomControl: false, zoomSnap: 0.25 });
 L.control.zoom({ position: 'topright' }).addTo(map);

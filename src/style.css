@@ -42,6 +42,20 @@ h1 { font: 600 clamp(48px, 7.6vw, 112px)/1.08 var(--display); letter-spacing: -.
 .date-day>span { font: 13px var(--mono); color: var(--muted); letter-spacing: 0; margin-left: 8px; }
 .event-date p { font-size: 14px; line-height: 1.8; margin-top: 10px; }
 .event-date b { font-weight: 700; white-space: nowrap; }
+.meeting-countdown { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin: 0 0 30px; padding: 22px 28px; background: #ffe369; border-top: 3px solid var(--ink); }
+.countdown-caption>span { font: 600 27px/1.2 var(--display); text-transform: uppercase; }
+.countdown-caption p { margin-top: 8px; font-size: 12px; }
+.countdown-digits { display: flex; gap: clamp(18px, 3vw, 42px); }
+.countdown-digits>div { display: grid; gap: 5px; text-align: center; min-width: 46px; }
+.countdown-digits strong { font: 600 44px/1 var(--display); font-variant-numeric: tabular-nums; }
+.countdown-digits span { font-size: 11px; }
+.countdown-started { font-size: 14px; font-weight: 650; }
+.countdown-digits[hidden], .countdown-started[hidden] { display: none; }
+@media (max-width: 600px) {
+  .meeting-countdown { align-items: stretch; flex-direction: column; gap: 22px; padding: 20px; }
+  .countdown-digits { justify-content: space-between; gap: 12px; }
+  .countdown-digits strong { font-size: 40px; }
+}
 .section-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; margin-bottom: 20px; }
 .section-heading h2 { font-size: 28px; font-weight: 750; letter-spacing: -1px; }
 .section-note { font-size: 13px; color: var(--muted); }
