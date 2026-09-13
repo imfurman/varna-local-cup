@@ -52,3 +52,19 @@ Visual inspection of all generated portraits and the cover; browser inspection o
 ## Risks / Migration Notes
 
 Portraits are stylizations. Keep originals available when changing crop or export design. Generated source files remain in the Codex generated-images directory; the site uses only the repository copies above.
+
+## Abstract portraits / revision 2
+
+По просьбе пользователя заменены детальные карикатуры на абстрактные геометрические портреты с крупными узнаваемыми чертами. Встроенный `image_gen`, пять отдельных вызовов, исходное групповое фото как reference. Иконки используются во всех местах сайта, включая карту и PNG-награды.
+
+Новые файлы (предыдущие версии сохранены):
+
+- `public/avatars/ruslan-v2.png`: круглые очки, крупная цельная борода, тёмные пряди, синяя куртка.
+- `public/avatars/ilya-v2.png`: чёрный шлем, длинное узкое лицо, чёрная форма.
+- `public/avatars/andrii-v2.png`: лысая голова, широкая улыбка, серый капюшон.
+- `public/avatars/nikita-v2.png`: белый шлем, усы, чёрная форма.
+- `public/avatars/zhenya-v2.png`: длинные каштановые волосы набок, оливковая куртка.
+
+Точные промпты: [abstract-avatar-prompts.json](abstract-avatar-prompts.json).
+
+Медаль теперь построена в `src/lib/medal.js` как редактируемая графика сайта. Она общая для диалога и PNG: гранёный корпус, градиенты металла, эмаль, деления, лавровые ветви, круговая гравировка, крупный номер места и клетчатая лента. PNG использует встраиваемые data URL портретов, без внешних ресурсов внутри SVG. При экспорте проверены отсутствие наложений текста и сохранение первого женского места на сокращённой дистанции. Декоративное вращение отключается при `prefers-reduced-motion`.

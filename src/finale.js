@@ -11,7 +11,7 @@ const pick = pair => pair[language === 'bg' ? 1 : 0];
 const num = (v, n = 1) => new Intl.NumberFormat(locale, { maximumFractionDigits: n }).format(v);
 const clock = time => new Intl.DateTimeFormat(locale, { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Europe/Sofia', hourCycle: 'h23' }).format(new Date(time * 1000));
 const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const portrait = a => `<img src="./avatars/${a.avatar}.png" alt="${esc(a.name)}" width="80" height="80" loading="lazy">`;
+const portrait = a => `<img src="./avatars/${a.avatar}-v2.png" alt="${esc(a.name)}" width="80" height="80" loading="lazy">`;
 const button = (a, kind, label, cls = '') => `<button class="${cls}" data-${kind}="${a.id}">${label}</button>`;
 
 export function mountFinale({ finale, course, event }) {
@@ -82,7 +82,7 @@ async function mountReplay(finale, course, athletes) {
   q('.replay-loading').remove();
   q('#replay-play').disabled=q('#replay-reset').disabled=q('#replay-seek').disabled=false;
   const riders=athletes.map(a=>{
-    const marker=L.marker([tracks[a.id][0][1],tracks[a.id][0][2]],{title:a.name,icon:L.divIcon({className:'replay-avatar',html:`<span style="--rider:${a.color}"><img src="./avatars/${a.avatar}.png" alt=""><b>${a.rank}</b></span>`,iconSize:[42,42],iconAnchor:[21,21]})}).addTo(map).bindTooltip(a.name,{direction:'top',offset:[0,-20]});
+    const marker=L.marker([tracks[a.id][0][1],tracks[a.id][0][2]],{title:a.name,icon:L.divIcon({className:'replay-avatar',html:`<span style="--rider:${a.color}"><img src="./avatars/${a.avatar}-v2.png" alt=""><b>${a.rank}</b></span>`,iconSize:[42,42],iconAnchor:[21,21]})}).addTo(map).bindTooltip(a.name,{direction:'top',offset:[0,-20]});
     const line=L.polyline([],{color:a.color,weight:3,opacity:.6,interactive:false}).addTo(map);
     marker.on('click',()=>select(a.id));
     const tether=L.polyline([],{color:a.color,weight:1.5,opacity:.8,interactive:false}).addTo(map);
