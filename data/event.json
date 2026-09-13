@@ -4,10 +4,10 @@
   "edition": "01",
   "location": "Варна, Болгария",
   "date": "2026-09-13",
-  "startTime": "10:30",
+  "startTime": "16:30",
   "startApproximate": true,
   "meeting": {
-    "time": "10:00",
+    "time": "16:00",
     "lat": 43.20807,
     "lon": 27.92384
   },
