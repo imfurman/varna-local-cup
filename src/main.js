@@ -6,6 +6,7 @@ import './style.css';
 import race from './generated/race.json';
 import { categories, formatTime, leaderboard } from './lib/race.js';
 import { meetingTimestamp, countdownParts } from './lib/countdown.js';
+import { startWeather } from './weather.js';
 
 const { event, participants, results, course } = race;
 const number = (value, digits = 0) => new Intl.NumberFormat('ru-RU', { maximumFractionDigits: digits, minimumFractionDigits: digits }).format(value);
@@ -42,6 +43,7 @@ document.querySelector('#app').innerHTML = `
     <span class="header-edition">Варна<span>Заезд ${escape(event.edition)}</span></span>
   </header>
   <main>
+    <div class="weather-strip" aria-label="Текущая погода в Варне"><div class="weather-reading"><span class="weather-location">Варна сейчас</span><span id="weather-summary" role="status">Загружаем погоду…</span><span id="weather-detail"></span></div><div class="weather-actions"><button id="weather-motion" type="button" aria-pressed="false" hidden>Выключить анимацию</button><a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer" aria-label="Источник погоды — Open-Meteo">Open-Meteo</a></div></div>
     <section class="event-heading" aria-labelledby="event-title">
       <div class="event-name"><p class="eyebrow">Локальная велогонка <span>Шоссе / МТБ</span></p><h1 id="event-title">${escape(event.title)}</h1></div>
       <div class="event-date"><strong class="date-day">${String(date.getUTCDate()).padStart(2, '0')}.${String(date.getUTCMonth()+1).padStart(2, '0')}<span>/${date.getUTCFullYear()}</span></strong><p>${escape(weekday)}<br>${event.meeting ? `Сбор <b>${escape(event.meeting.time)}</b> · ` : ''}Старт <b>${escape(startLabel)}</b></p></div>
@@ -101,6 +103,8 @@ if (meetingAt !== null) {
   updateCountdown();
   document.addEventListener('visibilitychange', () => { if (!document.hidden) updateCountdown(); });
 }
+
+startWeather();
 
 const map = L.map('map', { scrollWheelZoom: false, zoomControl: false, zoomSnap: 0.25 });
 L.control.zoom({ position: 'topright' }).addTo(map);
