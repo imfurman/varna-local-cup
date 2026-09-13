@@ -10,7 +10,7 @@
     "dev": "node scripts/prepare.mjs && vite --host 127.0.0.1",
     "build": "node scripts/prepare.mjs && vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "test": "node --test",
+    "test": "node scripts/prepare.mjs && node --test",
     "import:fit": "node scripts/import-fit.mjs",
     "approve": "node scripts/approve.mjs"
   },

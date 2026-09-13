@@ -15,6 +15,7 @@ Vite добавляет Open Graph, Twitter Card и canonical непосредс
 ## Data & Files
 
 - `public/og.png`: обложка для ссылки, включается в публикацию.
+- `public/og-bg.png`: болгарская обложка для `bg.html`; расписание и дистанцию обновлять в обеих картинках.
 - `scripts/social-preview.mjs`: генерация метаданных.
 - `data/event.json` и GPX: источник заголовка, описания и параметров заезда.
 - `docs/social-preview-prompt.txt`: запрос, использованный для создания обложки встроенным imagegen.

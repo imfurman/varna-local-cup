@@ -21,3 +21,6 @@ Use case: text-localization. Edit target: attached existing Varna Local Cup Tele
 
 2026-09-13 reschedule, built-in imagegen edit of public/og.png:
 Use case: text-localization. Edit target: existing Varna Local Cup cover. Change ONLY the schedule line from "СБОР 10:00 · СТАРТ ≈10:30" to exactly "СБОР 16:00 · СТАРТ ≈16:30". Preserve typography, size, black text and red separator, spacing, position, layout, landscape dimensions. Keep all other content unchanged: VARNA LOCAL CUP, 13.09.2026, 40,27 КМ, ШОССЕ + МТБ, large red slash and white background. No other changes.
+
+2026-09-13 Bulgarian variant, built-in imagegen. Output: public/og-bg.png.
+Use case: text-localization. Create a Bulgarian-language variant of the attached existing Varna Local Cup sharing poster. Change ONLY "СБОР 16:00 · СТАРТ ≈16:30" to "СРЕЩА 16:00 · СТАРТ ≈16:30" and "ШОССЕ + МТБ" to "ШОСЕ + МТБ" (Bulgarian spelling, one С in ШОСЕ). Keep all other text exactly: VARNA LOCAL CUP, 13.09.2026, 40,27 КМ. Preserve the original landscape dimensions, composition, black italic bold type, red separator and large red slash, white background. Keep text within margins and legible. No other changes.

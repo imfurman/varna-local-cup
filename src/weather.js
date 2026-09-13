@@ -1,3 +1,4 @@
+import { t, locale } from './language.js';
 import { fetchWeather, parseWeather, WEATHER_REFRESH_MS } from './lib/weather.js';
 import './weather.css';
 
@@ -19,7 +20,7 @@ export function startWeather() {
   const updateMotion = () => {
     sky.classList.toggle('weather-paused', paused || reducedMotion.matches || document.hidden);
     toggle.setAttribute('aria-pressed', String(paused || reducedMotion.matches));
-    toggle.textContent = paused || reducedMotion.matches ? 'Анимация выключена' : 'Выключить анимацию';
+    toggle.textContent = paused || reducedMotion.matches ? t("Анимация выключена") : t("Выключить анимацию");
     toggle.disabled = reducedMotion.matches;
   };
   toggle.addEventListener('click', () => { paused = !paused; saveStorage('vlc-weather-paused', String(paused)); updateMotion(); });
@@ -30,15 +31,15 @@ export function startWeather() {
       const weather = parseWeather(payload);
       sky.dataset.weather = weather.condition;
       sky.dataset.night = String(weather.night);
-      summary.textContent = `${weather.temperature > 0 ? '+' : ''}${weather.temperature}° · ${weather.label}`;
-      const time = new Intl.DateTimeFormat('ru-RU', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Sofia' }).format(weather.time);
-      detail.textContent = `${failed ? 'Не удалось обновить · ' : ''}Ветер ${weather.wind} м/с · данные на ${time}, Варна`;
+      summary.textContent = `${weather.temperature > 0 ? '+' : ''}${weather.temperature}° · ${t(weather.label)}`;
+      const time = new Intl.DateTimeFormat(locale, { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Sofia' }).format(weather.time);
+      detail.textContent = `${failed ? t("Не удалось обновить · ") : ''}${t("Ветер")} ${weather.wind} ${t("м/с · данные на")} ${time}, ${t("Варна")}`;
       toggle.hidden = false;
     } catch {
       delete sky.dataset.weather;
       delete sky.dataset.night;
-      summary.textContent = 'Погода временно недоступна';
-      detail.textContent = 'Попробуем обновить автоматически';
+      summary.textContent = t("Погода временно недоступна");
+      detail.textContent = t("Попробуем обновить автоматически");
       toggle.hidden = true;
     }
   };
