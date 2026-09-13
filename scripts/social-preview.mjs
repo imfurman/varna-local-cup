@@ -15,12 +15,15 @@ export function socialPreview() {
       const date = new Intl.DateTimeFormat(bg ? 'bg-BG' : 'ru-RU', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
         .format(new Date(`${event.date}T12:00:00Z`)).replace(/ г\.$/, '');
       const km = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 2 }).format(course.distanceM / 1000);
-      const title = `${event.title} · ${date}`;
+      const finished = event.status === 'finished';
+      const title = `${event.title} · ${finished ? (bg ? 'Резултати и повторение' : 'Итоги и повтор гонки') : date}`;
       const schedule = [event.meeting && `${bg ? 'Среща' : 'Сбор'} в ${event.meeting.time}`, event.startTime && `старт ${event.startApproximate ? 'около ' : 'в '}${event.startTime}`].filter(Boolean).join(', ');
-      const description = bg
+      const description = finished ? (bg
+        ? 'Руслан — 1, Илья — 2, Andrii — 3, Никита — 4. Женя — 1-ва при жените на съкратена дистанция. GPS повторение, лични истории и медали.'
+        : 'Руслан — 1, Илья — 2, Andrii — 3, Никита — 4. Женя — 1-я среди женщин на сокращённой дистанции. GPS-повтор, личные истории и медали.') : bg
         ? `Варна, България. ${km} км, изкачване ${Math.round(course.ascentM)} м. ${schedule ? `${schedule} — местно време. ` : ''}Шосе и МТБ, класиране за мъже и жени.`
         : `${event.location}. ${km} км, набор ${Math.round(course.ascentM)} м. ${schedule ? `${schedule} — местное время. ` : ''}Шоссе и МТБ, мужской и женский зачёты.`;
-      const coverName = bg ? 'og-bg.png' : 'og.png';
+      const coverName = finished ? 'og-finale.png' : bg ? 'og-bg.png' : 'og.png';
       const cover = readFileSync(new URL(`../public/${coverName}`, import.meta.url));
       if (cover.subarray(0, 8).toString('hex') !== '89504e470d0a1a0a') throw new Error('public/og.png должен быть PNG-файлом');
       const imageUrl = `${siteUrl}${coverName}?v=${createHash('sha256').update(cover).digest('hex').slice(0, 12)}`;
@@ -37,7 +40,7 @@ export function socialPreview() {
         'og:image:type': 'image/png',
         'og:image:width': String(cover.readUInt32BE(16)),
         'og:image:height': String(cover.readUInt32BE(20)),
-        'og:image:alt': `${bg ? 'Плакат' : 'Афиша'} ${event.title}: ${date}, ${km} км. ${schedule}.`,
+        'og:image:alt': finished ? `${event.title} — Race Replay, 13.09.2026` : `${bg ? 'Плакат' : 'Афиша'} ${event.title}: ${date}, ${km} км. ${schedule}.`,
       };
       const names = {
         description,

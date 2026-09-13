@@ -8,6 +8,7 @@ import race from './generated/race.json';
 import { formatTime, leaderboard } from './lib/race.js';
 import { meetingTimestamp, countdownParts } from './lib/countdown.js';
 import { startWeather } from './weather.js';
+import { mountFinale } from './finale.js';
 
 const { event, participants, results, course } = race;
 const categories = { male: t('Мужчины'), female: t('Женщины') };
@@ -35,7 +36,7 @@ const status = { upcoming: t("Готовимся к старту"), results: t("
 const startLabel = event.startTime ? `${event.startApproximate ? '≈ ' : ''}${event.startTime}` : t("Время уточняется");
 const meetingCoordinates = event.meeting ? `${number(Math.abs(event.meeting.lat), 5)}° ${event.meeting.lat >= 0 ? t("С") : t("Ю")}, ${number(Math.abs(event.meeting.lon), 5)}° ${event.meeting.lon >= 0 ? t("В") : t("З")}` : '';
 const meetingMapsUrl = event.meeting ? `https://www.google.com/maps/search/?api=1&query=${event.meeting.lat}%2C${event.meeting.lon}` : '';
-const meetingAt = meetingTimestamp(event);
+const meetingAt = event.status === 'finished' ? null : meetingTimestamp(event);
 document.title = `${event.title} · ${longDate}`;
 
 document.querySelector('#app').innerHTML = `
@@ -192,7 +193,7 @@ document.querySelectorAll('[data-filter]').forEach(button => button.addEventList
   document.querySelectorAll('[data-filter]').forEach(b => { b.classList.toggle('selected', b === button); b.setAttribute('aria-pressed', String(b === button)); });
   renderResults(button.dataset.filter);
 }));
-renderResults();
+if (!race.finale) renderResults();
 
 let resultMap;
 function openResult(id) {
@@ -217,3 +218,5 @@ const observer = new IntersectionObserver(entries => entries.forEach(entry => {
   if (entry.isIntersecting) document.querySelectorAll('nav a').forEach(link => link.classList.toggle('active', link.hash === `#${entry.target.id}`));
 }), { rootMargin: '-15% 0px -65% 0px' });
 ['route', 'participants', 'results'].forEach(id => observer.observe(document.getElementById(id)));
+
+if (race.finale) { mountFinale(race); observer.observe(document.getElementById('replay')); }

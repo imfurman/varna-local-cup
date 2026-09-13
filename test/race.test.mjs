@@ -116,6 +116,7 @@ test('CLI import → local review → approve, duplicate protection, stale cours
   const directory = await mkdtemp(join(tmpdir(), 'varna-cup-test-'));
   try {
     await cp('data', join(directory, 'data'), { recursive: true });
+    await rm(join(directory, 'data/finale.json'), { force: true }); // This fixture represents a new race, before the finale.
     await writeFile(join(directory, 'data/event.json'), JSON.stringify({ ...race.event, routeFile: 'route.gpx' }));
     await writeFile(join(directory, 'data/participants.json'), JSON.stringify(race.participants));
     await writeFile(join(directory, 'data/results.json'), '[]');

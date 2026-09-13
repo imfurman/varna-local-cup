@@ -1,0 +1,850 @@
+{
+  "eventId": "2026-09-13",
+  "courseHash": "ec9ce5ff714d07bdb555b148abb0300eb588e06d30d25473cf384cc4117f9381",
+  "builtAt": "2026-09-13T19:35:24.970Z",
+  "start": 1789305614,
+  "end": 1789314987,
+  "athletes": [
+    {
+      "id": "ruslan-shchur",
+      "name": "Руслан Щур",
+      "gender": "male",
+      "bib": 1,
+      "rank": 1,
+      "categoryRank": 1,
+      "color": "#ed583f",
+      "avatar": "ruslan",
+      "complete": true,
+      "start": 1789305635,
+      "end": 1789312490,
+      "sourceHash": "f178937f18117448265fca4e3f321185494ebd0ebbdef2413c61edd94658b43e",
+      "rejectedGpsPoints": 0,
+      "warnings": [
+        "Разрыв GPS-записи до 126 с. Проверьте время и прохождение маршрута."
+      ],
+      "elapsed": 6855,
+      "gpsDistanceM": 40220,
+      "pausedSeconds": 175,
+      "dwellSeconds": 197,
+      "movingSeconds": 6680,
+      "movingBasis": "device",
+      "pauses": [
+        {
+          "start": 1789306636,
+          "end": 1789306692,
+          "seconds": 56
+        },
+        {
+          "start": 1789307983,
+          "end": 1789308102,
+          "seconds": 119
+        }
+      ],
+      "dwells": [
+        {
+          "start": 1789307977,
+          "end": 1789308109,
+          "seconds": 132,
+          "lat": 43.2631653919816,
+          "lon": 28.00547649152577,
+          "courseM": 12283.287513444948
+        },
+        {
+          "start": 1789306634,
+          "end": 1789306699,
+          "seconds": 65,
+          "lat": 43.225725861266255,
+          "lon": 27.972325813025236,
+          "courseM": 5286.958690119184
+        }
+      ],
+      "splits": [
+        {
+          "fromKm": 0,
+          "toKm": 5,
+          "start": 1789305635,
+          "end": 1789306541,
+          "seconds": 906,
+          "speed": 19.9
+        },
+        {
+          "fromKm": 5,
+          "toKm": 10,
+          "start": 1789306541,
+          "end": 1789307522,
+          "seconds": 981,
+          "speed": 18.3
+        },
+        {
+          "fromKm": 10,
+          "toKm": 15,
+          "start": 1789307522,
+          "end": 1789308378,
+          "seconds": 856,
+          "speed": 21
+        },
+        {
+          "fromKm": 15,
+          "toKm": 20,
+          "start": 1789308378,
+          "end": 1789308894,
+          "seconds": 516,
+          "speed": 34.9
+        },
+        {
+          "fromKm": 20,
+          "toKm": 25,
+          "start": 1789308894,
+          "end": 1789309654,
+          "seconds": 760,
+          "speed": 23.7
+        },
+        {
+          "fromKm": 25,
+          "toKm": 30,
+          "start": 1789309654,
+          "end": 1789310523,
+          "seconds": 869,
+          "speed": 20.7
+        },
+        {
+          "fromKm": 30,
+          "toKm": 35,
+          "start": 1789310523,
+          "end": 1789311799,
+          "seconds": 1276,
+          "speed": 14.1
+        },
+        {
+          "fromKm": 35,
+          "toKm": 40,
+          "start": 1789311799,
+          "end": 1789312463,
+          "seconds": 664,
+          "speed": 27.1
+        }
+      ],
+      "peak": {
+        "speed": 63.1,
+        "start": 1789308370,
+        "end": 1789308400,
+        "courseM": 15396.870109655825
+      },
+      "sensors": {
+        "heart": {
+          "average": 149,
+          "max": 178,
+          "coverage": 97
+        },
+        "power": {
+          "average": 166,
+          "max": 648,
+          "coverage": 98
+        },
+        "cadence": {
+          "average": 85,
+          "max": 120,
+          "coverage": 91
+        }
+      },
+      "ascentM": 656,
+      "descentM": 367,
+      "courseAverageKmh": 21.2
+    },
+    {
+      "id": "ilya-garkusha",
+      "name": "Илья Гаркуша",
+      "gender": "male",
+      "bib": 2,
+      "rank": 2,
+      "categoryRank": 2,
+      "color": "#268ce0",
+      "avatar": "ilya",
+      "complete": true,
+      "start": 1789305614,
+      "end": 1789312642,
+      "sourceHash": "30e4e9cb665cdf82fb62e4b931caa7ae6bf07f41f85ac69fe61cca1583193eba",
+      "rejectedGpsPoints": 0,
+      "warnings": [
+        "Разрыв GPS-записи до 125 с. Проверьте время и прохождение маршрута."
+      ],
+      "elapsed": 7028,
+      "gpsDistanceM": 40117,
+      "pausedSeconds": 208,
+      "dwellSeconds": 220,
+      "movingSeconds": 6820,
+      "movingBasis": "device",
+      "pauses": [
+        {
+          "start": 1789305621,
+          "end": 1789305634,
+          "seconds": 13
+        },
+        {
+          "start": 1789306626,
+          "end": 1789306627,
+          "seconds": 1
+        },
+        {
+          "start": 1789306630,
+          "end": 1789306699,
+          "seconds": 69
+        },
+        {
+          "start": 1789307983,
+          "end": 1789308108,
+          "seconds": 125
+        }
+      ],
+      "dwells": [
+        {
+          "start": 1789307974,
+          "end": 1789308108,
+          "seconds": 134,
+          "lat": 43.263034634292126,
+          "lon": 28.00534162670374,
+          "courseM": 12265.413192476335
+        },
+        {
+          "start": 1789306613,
+          "end": 1789306699,
+          "seconds": 86,
+          "lat": 43.22553399950266,
+          "lon": 27.972692772746086,
+          "courseM": 5250.34209569845
+        }
+      ],
+      "splits": [
+        {
+          "fromKm": 0,
+          "toKm": 5,
+          "start": 1789305614,
+          "end": 1789306531,
+          "seconds": 917,
+          "speed": 19.6
+        },
+        {
+          "fromKm": 5,
+          "toKm": 10,
+          "start": 1789306531,
+          "end": 1789307530,
+          "seconds": 999,
+          "speed": 18
+        },
+        {
+          "fromKm": 10,
+          "toKm": 15,
+          "start": 1789307530,
+          "end": 1789308381,
+          "seconds": 851,
+          "speed": 21.2
+        },
+        {
+          "fromKm": 15,
+          "toKm": 20,
+          "start": 1789308381,
+          "end": 1789308918,
+          "seconds": 537,
+          "speed": 33.5
+        },
+        {
+          "fromKm": 20,
+          "toKm": 25,
+          "start": 1789308918,
+          "end": 1789309657,
+          "seconds": 739,
+          "speed": 24.4
+        },
+        {
+          "fromKm": 25,
+          "toKm": 30,
+          "start": 1789309657,
+          "end": 1789310604,
+          "seconds": 947,
+          "speed": 19
+        },
+        {
+          "fromKm": 30,
+          "toKm": 35,
+          "start": 1789310604,
+          "end": 1789311903,
+          "seconds": 1299,
+          "speed": 13.9
+        },
+        {
+          "fromKm": 35,
+          "toKm": 40,
+          "start": 1789311903,
+          "end": 1789312612,
+          "seconds": 709,
+          "speed": 25.4
+        }
+      ],
+      "peak": {
+        "speed": 56.1,
+        "start": 1789308369,
+        "end": 1789308399,
+        "courseM": 15299.968590893865
+      },
+      "sensors": {},
+      "ascentM": 645,
+      "descentM": 355,
+      "courseAverageKmh": 20.6
+    },
+    {
+      "id": "andrey-tikhiy",
+      "name": "Andrii Silent",
+      "gender": "male",
+      "bib": 3,
+      "rank": 3,
+      "categoryRank": 3,
+      "color": "#26aa80",
+      "avatar": "andrii",
+      "complete": true,
+      "start": 1789305618,
+      "end": 1789312762,
+      "sourceHash": "f62d460a7631277df09af50f331336a5983b3ac1519521ff5e1c6716dd8e8f4f",
+      "rejectedGpsPoints": 0,
+      "warnings": [
+        "Разрыв GPS-записи до 78 с. Проверьте время и прохождение маршрута."
+      ],
+      "elapsed": 7144,
+      "gpsDistanceM": 40279,
+      "pausedSeconds": 121,
+      "dwellSeconds": 147,
+      "movingSeconds": 7023,
+      "movingBasis": "device",
+      "pauses": [
+        {
+          "start": 1789305732,
+          "end": 1789305734,
+          "seconds": 2
+        },
+        {
+          "start": 1789306558,
+          "end": 1789306636,
+          "seconds": 78
+        },
+        {
+          "start": 1789308060,
+          "end": 1789308098,
+          "seconds": 38
+        },
+        {
+          "start": 1789308243,
+          "end": 1789308246,
+          "seconds": 3
+        }
+      ],
+      "dwells": [
+        {
+          "start": 1789306543,
+          "end": 1789306636,
+          "seconds": 93,
+          "lat": 43.22373826056719,
+          "lon": 27.973500033840537,
+          "courseM": 5036.771387792469
+        },
+        {
+          "start": 1789308045,
+          "end": 1789308099,
+          "seconds": 54,
+          "lat": 43.26297663152218,
+          "lon": 28.005251605063677,
+          "courseM": 12255.68161177032
+        }
+      ],
+      "splits": [
+        {
+          "fromKm": 0,
+          "toKm": 5,
+          "start": 1789305618,
+          "end": 1789306539,
+          "seconds": 921,
+          "speed": 19.5
+        },
+        {
+          "fromKm": 5,
+          "toKm": 10,
+          "start": 1789306539,
+          "end": 1789307540,
+          "seconds": 1001,
+          "speed": 18
+        },
+        {
+          "fromKm": 10,
+          "toKm": 15,
+          "start": 1789307540,
+          "end": 1789308374,
+          "seconds": 834,
+          "speed": 21.6
+        },
+        {
+          "fromKm": 15,
+          "toKm": 20,
+          "start": 1789308374,
+          "end": 1789308923,
+          "seconds": 549,
+          "speed": 32.8
+        },
+        {
+          "fromKm": 20,
+          "toKm": 25,
+          "start": 1789308923,
+          "end": 1789309698,
+          "seconds": 775,
+          "speed": 23.2
+        },
+        {
+          "fromKm": 25,
+          "toKm": 30,
+          "start": 1789309698,
+          "end": 1789310604,
+          "seconds": 906,
+          "speed": 19.9
+        },
+        {
+          "fromKm": 30,
+          "toKm": 35,
+          "start": 1789310604,
+          "end": 1789311875,
+          "seconds": 1271,
+          "speed": 14.2
+        },
+        {
+          "fromKm": 35,
+          "toKm": 40,
+          "start": 1789311875,
+          "end": 1789312721,
+          "seconds": 846,
+          "speed": 21.3
+        }
+      ],
+      "peak": {
+        "speed": 55.8,
+        "start": 1789308370,
+        "end": 1789308400,
+        "courseM": 15412.598214974008
+      },
+      "sensors": {
+        "cadence": {
+          "average": 87,
+          "max": 127,
+          "coverage": 92
+        }
+      },
+      "ascentM": 651,
+      "descentM": 359,
+      "courseAverageKmh": 20.3
+    },
+    {
+      "id": "nikita-bez",
+      "name": "Никита Безь",
+      "gender": "male",
+      "bib": 5,
+      "rank": 4,
+      "categoryRank": 4,
+      "color": "#d4a308",
+      "avatar": "nikita",
+      "complete": true,
+      "start": 1789305614,
+      "end": 1789314987,
+      "sourceHash": "6cc97848db42cc53ddae047097d27d85c815e890da374d68c060a63ce348d3f3",
+      "rejectedGpsPoints": 12,
+      "warnings": [
+        "GPS показывает скорость до 226 км/ч. Возможен скачок координат."
+      ],
+      "elapsed": 9373,
+      "gpsDistanceM": 43089,
+      "pausedSeconds": 2461,
+      "dwellSeconds": 3067,
+      "movingSeconds": 6912,
+      "movingBasis": "device",
+      "pauses": [
+        {
+          "start": 1789306642,
+          "end": 1789306695,
+          "seconds": 53
+        },
+        {
+          "start": 1789308016,
+          "end": 1789308107,
+          "seconds": 91
+        },
+        {
+          "start": 1789310624,
+          "end": 1789310737,
+          "seconds": 113
+        },
+        {
+          "start": 1789310754,
+          "end": 1789310816,
+          "seconds": 62
+        },
+        {
+          "start": 1789310831,
+          "end": 1789310839,
+          "seconds": 8
+        },
+        {
+          "start": 1789310848,
+          "end": 1789310849,
+          "seconds": 1
+        },
+        {
+          "start": 1789310867,
+          "end": 1789310893,
+          "seconds": 26
+        },
+        {
+          "start": 1789310947,
+          "end": 1789311013,
+          "seconds": 66
+        },
+        {
+          "start": 1789311022,
+          "end": 1789311024,
+          "seconds": 2
+        },
+        {
+          "start": 1789311038,
+          "end": 1789311044,
+          "seconds": 6
+        },
+        {
+          "start": 1789311053,
+          "end": 1789311087,
+          "seconds": 34
+        },
+        {
+          "start": 1789311097,
+          "end": 1789311217,
+          "seconds": 120
+        },
+        {
+          "start": 1789311226,
+          "end": 1789311382,
+          "seconds": 156
+        },
+        {
+          "start": 1789311415,
+          "end": 1789311438,
+          "seconds": 23
+        },
+        {
+          "start": 1789311751,
+          "end": 1789311871,
+          "seconds": 120
+        },
+        {
+          "start": 1789311880,
+          "end": 1789312319,
+          "seconds": 439
+        },
+        {
+          "start": 1789312334,
+          "end": 1789312463,
+          "seconds": 129
+        },
+        {
+          "start": 1789312484,
+          "end": 1789312494,
+          "seconds": 10
+        },
+        {
+          "start": 1789312517,
+          "end": 1789312669,
+          "seconds": 152
+        },
+        {
+          "start": 1789312684,
+          "end": 1789312885,
+          "seconds": 201
+        },
+        {
+          "start": 1789312894,
+          "end": 1789313010,
+          "seconds": 116
+        },
+        {
+          "start": 1789313042,
+          "end": 1789313052,
+          "seconds": 10
+        },
+        {
+          "start": 1789313068,
+          "end": 1789313128,
+          "seconds": 60
+        },
+        {
+          "start": 1789313187,
+          "end": 1789313196,
+          "seconds": 9
+        },
+        {
+          "start": 1789313267,
+          "end": 1789313269,
+          "seconds": 2
+        },
+        {
+          "start": 1789313278,
+          "end": 1789313312,
+          "seconds": 34
+        },
+        {
+          "start": 1789313322,
+          "end": 1789313684,
+          "seconds": 362
+        },
+        {
+          "start": 1789313697,
+          "end": 1789313731,
+          "seconds": 34
+        },
+        {
+          "start": 1789313740,
+          "end": 1789313762,
+          "seconds": 22
+        }
+      ],
+      "dwells": [
+        {
+          "start": 1789311722,
+          "end": 1789312469,
+          "seconds": 747,
+          "lat": 43.342408910393715,
+          "lon": 27.98886171542108,
+          "courseM": 32637.977919827157
+        },
+        {
+          "start": 1789310847,
+          "end": 1789311442,
+          "seconds": 595,
+          "lat": 43.35016032680869,
+          "lon": 27.99859226681292,
+          "courseM": 31321.83993234141
+        },
+        {
+          "start": 1789312469,
+          "end": 1789313013,
+          "seconds": 544,
+          "lat": 43.34213063120842,
+          "lon": 27.98845854587853,
+          "courseM": 32682.59397593289
+        },
+        {
+          "start": 1789313256,
+          "end": 1789313778,
+          "seconds": 522,
+          "lat": 43.34222459234297,
+          "lon": 27.98808429390192,
+          "courseM": 32700.700846112566
+        },
+        {
+          "start": 1789310593,
+          "end": 1789310847,
+          "seconds": 254,
+          "lat": 43.35038001649082,
+          "lon": 27.999044973403215,
+          "courseM": 31277.892825084407
+        },
+        {
+          "start": 1789313082,
+          "end": 1789313256,
+          "seconds": 174,
+          "lat": 43.34209609776735,
+          "lon": 27.988587375730276,
+          "courseM": 32676.505809094182
+        },
+        {
+          "start": 1789307963,
+          "end": 1789308112,
+          "seconds": 149,
+          "lat": 43.26322976499796,
+          "lon": 28.005598364397883,
+          "courseM": 12295.399127271457
+        },
+        {
+          "start": 1789306611,
+          "end": 1789306693,
+          "seconds": 82,
+          "lat": 43.22551681660116,
+          "lon": 27.972744656726718,
+          "courseM": 5245.906854311407
+        }
+      ],
+      "splits": [
+        {
+          "fromKm": 0,
+          "toKm": 5,
+          "start": 1789305614,
+          "end": 1789306532,
+          "seconds": 918,
+          "speed": 19.6
+        },
+        {
+          "fromKm": 5,
+          "toKm": 10,
+          "start": 1789306532,
+          "end": 1789307506,
+          "seconds": 974,
+          "speed": 18.5
+        },
+        {
+          "fromKm": 10,
+          "toKm": 15,
+          "start": 1789307506,
+          "end": 1789308363,
+          "seconds": 857,
+          "speed": 21
+        },
+        {
+          "fromKm": 15,
+          "toKm": 20,
+          "start": 1789308363,
+          "end": 1789308844,
+          "seconds": 481,
+          "speed": 37.4
+        },
+        {
+          "fromKm": 20,
+          "toKm": 25,
+          "start": 1789308844,
+          "end": 1789309507,
+          "seconds": 663,
+          "speed": 27.1
+        },
+        {
+          "fromKm": 25,
+          "toKm": 30,
+          "start": 1789309507,
+          "end": 1789310309,
+          "seconds": 802,
+          "speed": 22.4
+        },
+        {
+          "fromKm": 30,
+          "toKm": 35,
+          "start": 1789310309,
+          "end": 1789314245,
+          "seconds": 3936,
+          "speed": 4.6
+        },
+        {
+          "fromKm": 35,
+          "toKm": 40,
+          "start": 1789314245,
+          "end": 1789314956,
+          "seconds": 711,
+          "speed": 25.3
+        }
+      ],
+      "peak": {
+        "speed": 63.7,
+        "start": 1789308363,
+        "end": 1789308393,
+        "courseM": 15541.935774936122
+      },
+      "sensors": {},
+      "ascentM": 667,
+      "descentM": 372,
+      "courseAverageKmh": 15.5
+    },
+    {
+      "id": "evgeniya-shatskaya",
+      "name": "Евгения Шацкая",
+      "gender": "female",
+      "bib": 4,
+      "rank": 5,
+      "categoryRank": 1,
+      "color": "#9761d5",
+      "avatar": "zhenya",
+      "complete": false,
+      "start": 1789305635,
+      "end": 1789312004,
+      "sourceHash": "aaa27313824fb069c576c5ead61fe6bc720b8d20055cdd6f4eed5cfc7e6d8539",
+      "rejectedGpsPoints": 0,
+      "warnings": [
+        "Маршрут пройден не полностью или не по порядку: 31 из 80 контрольных точек. Финиш не найден.",
+        "Разрыв GPS-записи до 101 с. Проверьте время и прохождение маршрута."
+      ],
+      "elapsed": 6369,
+      "gpsDistanceM": 26117,
+      "pausedSeconds": 0,
+      "dwellSeconds": 270,
+      "movingSeconds": 6099,
+      "movingBasis": "spatial",
+      "pauses": [],
+      "dwells": [
+        {
+          "start": 1789309672,
+          "end": 1789309787,
+          "seconds": 115,
+          "lat": 43.27733097597957,
+          "lon": 28.017540061846375,
+          "courseM": 14292.866416372874
+        },
+        {
+          "start": 1789311793,
+          "end": 1789311848,
+          "seconds": 55,
+          "lat": 43.21628171950579,
+          "lon": 27.95619886368513,
+          "courseM": 2820.16356720678
+        },
+        {
+          "start": 1789306333,
+          "end": 1789306387,
+          "seconds": 54,
+          "lat": 43.218221543356776,
+          "lon": 27.965154759585857,
+          "courseM": 3588.1094174347418
+        },
+        {
+          "start": 1789306682,
+          "end": 1789306728,
+          "seconds": 46,
+          "lat": 43.22128303349018,
+          "lon": 27.976675014942884,
+          "courseM": 4595.726374317819
+        }
+      ],
+      "splits": [
+        {
+          "fromKm": 0,
+          "toKm": 5,
+          "start": 1789305635,
+          "end": 1789306979,
+          "seconds": 1344,
+          "speed": 13.4
+        },
+        {
+          "fromKm": 5,
+          "toKm": 10,
+          "start": 1789306979,
+          "end": 1789308573,
+          "seconds": 1594,
+          "speed": 11.3
+        },
+        {
+          "fromKm": 10,
+          "toKm": 15,
+          "start": 1789308573,
+          "end": 1789309893,
+          "seconds": 1320,
+          "speed": 13.6
+        }
+      ],
+      "peak": {
+        "speed": 32.9,
+        "start": 1789310327,
+        "end": 1789310357,
+        "courseM": 12287.838641741671
+      },
+      "sensors": {},
+      "ascentM": null,
+      "descentM": null,
+      "courseAverageKmh": null
+    }
+  ]
+}

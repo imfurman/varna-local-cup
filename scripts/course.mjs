@@ -16,7 +16,20 @@ export async function loadRace() {
   for (const r of results) {
     if (r.courseHash !== courseHash) throw new Error(`Маршрут / настройки изменились после расчёта результата ${r.riderId}. Пересчитайте FIT.`);
   }
-  return { event, participants, results, course: { ...course, hash: courseHash } };
+  let finale = null;
+  try { finale = await readJSON('data/finale.json'); } catch (error) { if (error.code !== 'ENOENT') throw error; }
+  if (finale) {
+    if (finale.eventId !== event.id || finale.courseHash !== courseHash) throw new Error('Finale data does not match event / course');
+    const ranks = new Set(), ids = new Set();
+    for (const a of finale.athletes) {
+      if (!participants.some(p => p.id === a.id) || ids.has(a.id) || ranks.has(a.rank) || !Number.isInteger(a.rank) || a.rank < 1) throw new Error('Invalid finale standings');
+      ids.add(a.id); ranks.add(a.rank);
+      const result = results.find(r => r.riderId === a.id);
+      if (a.complete && (!result || result.elapsedSeconds !== a.elapsed)) throw new Error('Finale time is inconsistent');
+      if (!a.complete && a.courseAverageKmh !== null) throw new Error('Short course must not have full course average');
+    }
+  }
+  return { event, participants, results, finale, course: { ...course, hash: courseHash } };
 }
 
 export function parseCourse(xml) {

@@ -35,9 +35,10 @@ test('each built entry has its own static locale, URL, description and sharing c
     const output = socialPreview().transformIndexHtml(readFileSync(file, 'utf8'), { filename: `/site/${file}` });
     const meta = Object.fromEntries(output.tags.filter(t => t.tag === 'meta').map(t => [t.attrs.property || t.attrs.name, t.attrs.content]));
     assert.equal(meta['og:locale'], language === 'bg' ? 'bg_BG' : 'ru_RU');
-    assert.ok(meta['og:image'].includes(language === 'bg' ? '/og-bg.png?' : '/og.png?'));
+    assert.ok(meta['og:image'].includes(event.status === 'finished' ? '/og-finale.png?' : language === 'bg' ? '/og-bg.png?' : '/og.png?'));
     assert.equal(meta['og:url'], `https://imfurman.github.io/varna-local-cup/${language === 'bg' ? 'bg.html' : ''}`);
-    if (event.meeting) assert.ok(meta.description.includes(`${language === 'bg' ? 'Среща' : 'Сбор'} в ${event.meeting.time}`));
+    if (event.status === 'finished') assert.ok(meta.description.includes('GPS'));
+    if (event.meeting && event.status !== 'finished') assert.ok(meta.description.includes(`${language === 'bg' ? 'Среща' : 'Сбор'} в ${event.meeting.time}`));
     assert.ok(output.tags.some(t => t.attrs.hreflang === 'bg'));
   }
 });
